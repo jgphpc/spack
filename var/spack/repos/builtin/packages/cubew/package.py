@@ -9,10 +9,11 @@ class Cubew(AutotoolsPackage):
     """Component of CubeBundle: High performance C Writer library"""
 
     homepage = "https://www.scalasca.org/software/cube-4.x/download.html"
-    url = "https://apps.fz-juelich.de/scalasca/releases/cube/4.4/dist/cubew-4.4.tar.gz"
+    url = "https://perftools.pages.jsc.fz-juelich.de/cicd/cubew/tags/cubew-4.9-rc2/cubew-4.9-rc2.tar.gz"
 
     maintainers("swat-jsc", "wrwilliams")
 
+    version("4.9-rc2", sha256="4ccd83790d93a4df8b16427ee78ad6441f295774d305ec6179089af715007d03")
     version("4.8.2", sha256="4f3bcf0622c2429b8972b5eb3f14d79ec89b8161e3c1cc5862ceda417d7975d2")
     version("4.8.1", sha256="42cbd743d87c16e805c8e28e79292ab33de259f2cfba46f2682cb35c1bc032d6")
     version("4.8", sha256="73c7f9e9681ee45d71943b66c01cfe675b426e4816e751ed2e0b670563ca4cf3")

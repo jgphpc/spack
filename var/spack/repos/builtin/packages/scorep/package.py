@@ -15,6 +15,7 @@ class Scorep(AutotoolsPackage):
     url = "https://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/scorep-7.1/scorep-7.1.tar.gz"
     maintainers("wrwilliams")
 
+    version("9.0-rc1", sha256="9d74f43e5d9cb58812189f625c3f978e181bdfbad413598b1f15fdb01b214f5e")
     version("8.4", sha256="7bbde9a0721d27cc6205baf13c1626833bcfbabb1f33b325a2d67976290f7f8a")
     version("8.3", sha256="76c914e6319221c059234597a3bc53da788ed679179ac99c147284dcefb1574a")
     # version 8.2 was immediately superseded before it hit Spack
@@ -96,6 +97,12 @@ class Scorep(AutotoolsPackage):
     # information. Starting with scorep 4.0 / cube 4.4, Score-P only depends on
     # two components of cube -- cubew and cubelib.
 
+
+    # SCOREP 9
+    depends_on("binutils", type="link", when="@9:")
+    depends_on("otf2@3.1-rc5:", when="@9:")
+    depends_on("cubew@4.9-rc2:", when="@9:")
+    depends_on("cubelib@4.9-rc2:", when="@9:")
     # SCOREP 8
     depends_on("binutils", type="link", when="@8:")
     depends_on("otf2@3:", when="@8:")
@@ -136,12 +143,15 @@ class Scorep(AutotoolsPackage):
     depends_on("mpi", when="+mpi")
     depends_on("papi", when="+papi")
     depends_on("pdt", when="+pdt")
-    depends_on("llvm", when="+unwind")
+    depends_on("llvm", when="+hip")
+    ### depends_on("llvm", when="+unwind")
     depends_on("libunwind", when="+unwind")
     depends_on("cuda@7:", when="@8.0:+cuda")
     depends_on("cuda", when="+cuda")
     depends_on("hip@4.2:", when="+hip")
+    #### llvm-amdgpu
     depends_on("rocprofiler-dev", when="+hip")
+    depends_on("roctracer-dev", when="+hip")
     depends_on("rocm-smi-lib", when="+hip")
     # Score-P requires a case-sensitive file system, and therefore
     # does not work on macOS
@@ -197,7 +207,9 @@ class Scorep(AutotoolsPackage):
             cuda_driver_path = self.find_libpath("libcuda", spec["cuda"].prefix)
             config_args.append("--with-libcuda-lib=%s" % cuda_driver_path)
         if "+hip" in spec:
+            print(f'# --- spec["hip"].prefix = {spec["hip"].prefix}')
             config_args.append("--with-rocm=%s" % spec["hip"].prefix)
+            config_args.append("--with-llvm=%s" % spec["llvm"].prefix)
 
         if "~shmem" in spec:
             config_args.append("--without-shmem")
