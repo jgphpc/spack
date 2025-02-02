@@ -1,0 +1,31 @@
+#!/bin/bash
+VV=/capstor/scratch/cscs/root/sebkelle/soft/spack/var/spack/environments/jg/.spack-env/view/
+#
+export MPICC=$VV/bin/mpicc
+export MPICXX=$VV/bin/mpicxx
+export MPIF77=$VV/bin/mpif90
+export MPIFC=$VV/bin/mpif90
+export CC=$VV/bin/mpicc 
+export CXX=$VV/bin/mpicxx
+./configure \
+--enable-shared \
+--with-otf2=$VV \
+--with-opari2=$VV \
+--with-cubew=$VV \
+--with-cubelib=$VV \
+--with-libunwind=$VV \
+--with-rocm=$VV \
+--with-mpi=mpich3 \
+--without-shmem \
+CFLAGS='-fPIC -w' \
+CXXFLAGS='-fPIC -w' \
+MPICC=$VV/bin/mpicc \
+MPICXX=$VV/bin/mpicxx \
+MPIF77=$VV/bin/mpif90 \
+MPIFC=$VV/bin/mpif90 \
+--prefix=/capstor/scratch/cscs/piccinal/nid002344/hip/SCOREP/9.0-rc1 \
+--with-machine-name=alps
+
+# --with-nocross-compiler-suite=gcc
+# --with-papi-header=
+# --with-papi-lib=

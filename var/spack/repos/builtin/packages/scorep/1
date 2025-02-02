@@ -1,0 +1,26 @@
+#!/bin/bash
+
+CXX=g++ CC=gcc \
+./configure \
+--with-otf2=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/otf2-3.1-rc5-4robbsjj5w3gy5m4ucjgzjduh6plqm63/bin \
+--with-opari2=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/opari2-2.0.8-j6qdgmuxij6qeskulehefwivndoswyor/bin \
+--enable-shared \
+--with-nocross-compiler-suite=gcc \
+--with-cubew=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/cubew-4.9-rc2-f25fwiusszhnk6pmg2fmtibrlfykwnwn/bin \
+--with-cubelib=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/cubelib-4.9-rc2-6qicxygjkirbqkqdl7cnw3lhncr4aib6/bin \
+--with-papi-header=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/papi-7.1.0-ggbtpryeoapc5xtjvm6mf6ta4faunetb/include \
+--with-papi-lib=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/papi-7.1.0-ggbtpryeoapc5xtjvm6mf6ta4faunetb/lib \
+--without-shmem \
+--with-mpi=mpich3 \
+--with-libbfd=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/binutils-2.43.1-ku54gkscbffzgwidohd45oxdlasrshhf \
+CFLAGS=-fPIC \
+CXXFLAGS=-fPIC \
+MPICC=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/cray-mpich-8.1.30-xqcuncsnziojbyv6zbpg5eqbvaqvmm45/bin/mpicc \
+MPICXX=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/cray-mpich-8.1.30-xqcuncsnziojbyv6zbpg5eqbvaqvmm45/bin/mpic++ \
+MPIF77=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/cray-mpich-8.1.30-xqcuncsnziojbyv6zbpg5eqbvaqvmm45/bin/mpif77 \
+MPIFC=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/cray-mpich-8.1.30-xqcuncsnziojbyv6zbpg5eqbvaqvmm45/bin/mpi \
+--prefix=/capstor/scratch/cscs/piccinal/nid002344/hip/SCOREP/9.0-rc1 \
+--with-machine-name=alps
+
+# --with-rocm=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/hip-6.2.4-t2nwoklypbwzm2sly3v4r2ggouzjax55 \
+# --with-llvm=/capstor/scratch/cscs/root/sebkelle/soft/spack/opt/spack/linux-sles15-zen4/gcc-13.3.0/llvm-18.1.8-ly4ythbia3hyngmzmqedarwqfw7dcpdu
